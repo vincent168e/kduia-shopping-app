@@ -3,7 +3,7 @@ import React, { createContext, useReducer } from 'react';
 // 5. The reducer - this is used to update the state, based on the action
 export const AppReducer = (state, action) => {
     let new_expenses = [];
-    switch(action.type) {
+    switch (action.type) {
         case 'ADD_QUALITY':
             let updatedqty = false;
             state.expenses.map((expense) => {
@@ -26,6 +26,7 @@ export const AppReducer = (state, action) => {
                     expense.quantity -= action.payload.quantity;
                 }
                 expense.quantity = expense.quantity < 0 ? 0 : expense.quantity;
+                new_expenses.push(expense);
                 return true;
             })
             state.expenses = new_expenses;
